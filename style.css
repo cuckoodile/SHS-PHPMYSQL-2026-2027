@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f4f7;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* --- Auth pages (login/register) --- */
+.auth-container {
+    max-width: 380px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.auth-container h1 {
+    margin-top: 0;
+    text-align: center;
+    color: #2c3e50;
+}
+
+form label {
+    display: block;
+    margin: 12px 0 4px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #2980b9;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background: #fdecea;
+    color: #c0392b;
+    border: 1px solid #f5b7b1;
+}
+
+.alert-success {
+    background: #eafaf1;
+    color: #27ae60;
+    border: 1px solid #a9dfbf;
+}
+
+/* --- Notepad app (index) --- */
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.user-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.note-form-section,
+.notes-list-section {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.form-actions button {
+    width: auto;
+    padding: 10px 20px;
+}
+
+.btn-cancel {
+    background: #bdc3c7;
+    color: #333;
+    padding: 10px 20px;
+    align-self: center;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.note-card {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card h3 {
+    margin: 0 0 8px;
+    color: #2c3e50;
+    word-break: break-word;
+}
+
+.note-card p {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #555;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.note-card small {
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.note-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-edit {
+    background: #f39c12;
+    color: #fff;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.empty-state {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+}
