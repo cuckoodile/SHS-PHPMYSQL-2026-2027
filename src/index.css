@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+button {
+    padding: .5rem .8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: solid;
+}
+
+input {
+    border: solid;
+    padding: .3rem .5rem;
+}
