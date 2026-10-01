@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function FormUser({ users, setUsers }) {
   const [isVisible, setVisible] = useState(true);
   const [formData, setFormData] = useState({
-    id: 0,
     username: "",
     age: 0,
   });
@@ -23,11 +22,26 @@ export default function FormUser({ users, setUsers }) {
   function handleFormSubmit(event) {
     event.preventDefault();
 
-    alert("Hello world!");
+    const newUser = {
+      id: users.length + 1,
+      ...formData,
+    };
+
+    setUsers([newUser, ...users]);
+    // alert(JSON.stringify(users));
+
+    setFormData({ username: "", age: 0 });
+    e.target.reset();
+  }
+
+  function handleInputOnChange(e) {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
   }
 
   return (
-    <div className="flex flex-col gap-7 items-center">
+    <div className="flex flex-col gap-4 items-center">
       {isVisible && (
         <form
           onSubmit={handleFormSubmit}
@@ -43,13 +57,25 @@ export default function FormUser({ users, setUsers }) {
             {/* Username Field */}
             <div>
               <label htmlFor="username">User Name</label>
-              <input type="text" name="username" id="username" />
+              <input
+                type="text"
+                name="username"
+                id="username"
+                onChange={handleInputOnChange}
+                value={formData.username}
+              />
             </div>
 
             {/* Age Field */}
             <div>
               <label htmlFor="age">Age</label>
-              <input type="number" name="age" id="age" />
+              <input
+                type="number"
+                name="age"
+                id="age"
+                onChange={handleInputOnChange}
+                value={formData.age}
+              />
             </div>
 
             {/* Action Fields */}
@@ -57,6 +83,7 @@ export default function FormUser({ users, setUsers }) {
           </section>
         </form>
       )}
+
       <button onClick={handleCounterVisibility} className="border">
         {isVisible ? "Hide" : "Show"}
       </button>

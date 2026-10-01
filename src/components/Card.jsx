@@ -18,6 +18,11 @@ export default function Card({ user }) {
       <p>ID: {user.id}</p>
       <p>Username: {user.username}</p>
       <p>Age: {user.age}</p>
+
+      <div className="flex gap-3">
+        <button className="bg-green-800">Edit</button>
+        <button className="bg-red-800">Delete</button>
+      </div>
     </div>
   );
 }
