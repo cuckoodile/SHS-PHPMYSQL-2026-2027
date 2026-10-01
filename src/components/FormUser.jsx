@@ -1,12 +1,31 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
+const emptyForm = { username: "", age: 0 };
+
 // Our component standard name is title case.
-export default function FormUser({ users, setUsers }) {
+export default function FormUser({
+  users,
+  setUsers,
+  userToEdit,
+  onUpdate,
+  onCancel,
+}) {
   const [isVisible, setVisible] = useState(true);
+  const [nextId, setNextId] = useState(users.length + 1);
   const [formData, setFormData] = useState({
     username: "",
     age: 0,
   });
+
+  useEffect(() => {
+    if (userToEdit) {
+      setFormData({ username: userToEdit.username, age: userToEdit.age });
+      setVisible(true);
+    } else {
+      setFormData(emptyForm);
+    }
+  }, [userToEdit]);
 
   function handleCounterVisibility() {
     setVisible(!isVisible);
@@ -22,16 +41,16 @@ export default function FormUser({ users, setUsers }) {
   function handleFormSubmit(event) {
     event.preventDefault();
 
-    const newUser = {
-      id: users.length + 1,
-      ...formData,
-    };
+    const cleanData = { ...formData, age: Number(formData.age) };
 
-    setUsers([newUser, ...users]);
-    // alert(JSON.stringify(users));
+    if (userToEdit) {
+      onUpdate({ ...userToEdit, ...cleanData });
+    } else {
+      setNextId((prev) => prev + 1);
+      setUsers([{ id: nextId, ...cleanData }, ...users]);
+    }
 
-    setFormData({ username: "", age: 0 });
-    e.target.reset();
+    setFormData(emptyForm);
   }
 
   function handleInputOnChange(e) {
@@ -79,7 +98,12 @@ export default function FormUser({ users, setUsers }) {
             </div>
 
             {/* Action Fields */}
-            <button>Create</button>
+            <button type="submit">{userToEdit ? "Update" : "Create"}</button>
+            {userToEdit && (
+              <button type="button" onClick={onCancel}>
+                Cancel
+              </button>
+            )}
           </section>
         </form>
       )}
