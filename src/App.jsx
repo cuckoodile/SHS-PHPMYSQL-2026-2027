@@ -41,6 +41,8 @@ export default function App() {
       {/* <Counter /> */}
 
       <ContainerUser />
+
+      {/* More components... */}
     </div>
   );
 }

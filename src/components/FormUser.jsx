@@ -19,6 +19,16 @@ export default function FormUser({
   });
 
   useEffect(() => {
+    /* userToEdit possible values
+        1. null
+        2. Object:
+            userToEdit = {
+                id: 2,
+                username: "fern",
+                age: 22,
+            },
+    */
+
     if (userToEdit) {
       setFormData({ username: userToEdit.username, age: userToEdit.age });
       setVisible(true);
@@ -26,6 +36,19 @@ export default function FormUser({
       setFormData(emptyForm);
     }
   }, [userToEdit]);
+
+  /* useEffect Triggers
+    1. onMount
+        - Execute the code block when the component mounts or after re-renders
+    2. onUpdate
+        - Execute the code bloch whenever the value of the Dependency Array changes
+    3. onUnMount/ onReturn      <-- Skip
+
+    Syntax:
+    useEffect(() => {
+        Code Block    
+    }, [Dependency Array])
+  */
 
   function handleCounterVisibility() {
     setVisible(!isVisible);
@@ -38,25 +61,69 @@ export default function FormUser({
     }
   }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
+  function handleFormSubmit(e) {
+    // Disables the default page reload on submit
+    e.preventDefault();
 
     const cleanData = { ...formData, age: Number(formData.age) };
 
+    /* What does cleanData do?
+        formData = {
+        username: 'fern',
+        age: '22'
+        }
+        
+        cleanData= {
+            username: 'fern',
+            age: '22',      <-- Duplicated, remove
+            age: 22
+        }
+
+        cleanData= {
+            username: 'fern',
+            age: 22
+        }
+
+        Summary:
+        1. cleanData copy the formData
+        2. cleanData set the age into Number type
+        3. cleanData removes the duplicated string age
+    */
+
     if (userToEdit) {
+      // Update
       onUpdate({ ...userToEdit, ...cleanData });
     } else {
+      // Create
       setNextId((prev) => prev + 1);
       setUsers([{ id: nextId, ...cleanData }, ...users]);
     }
 
+    // Reset the form fields
     setFormData(emptyForm);
   }
 
   function handleInputOnChange(e) {
+    // e stands for the element
+    // target is how we get the element's attributes
     const { name, value } = e.target;
+    // name = 'age'
+    // ...
+    // DOM
+    // name: const usernameInput = document.getElementbyId('username')
+    // value: usernameInput.value
 
+    // States are immutable
+    // formData.username = value
     setFormData({ ...formData, [name]: value });
+    // setFormData(
+    // {
+    //     username: "fern",
+    //      age: 220
+    // });
+
+    // Spreader ...value
+    // setFormData({ ...formData, username: 'fern' });
   }
 
   return (
@@ -82,6 +149,8 @@ export default function FormUser({
                 id="username"
                 onChange={handleInputOnChange}
                 value={formData.username}
+                // let usernameInput = document.getElementbyId('username')
+                // console.log(usernameInput.value)
               />
             </div>
 

@@ -1,0 +1,45 @@
+pnpm create vite@latest .
+
+npm create vite@latest .
+
+1. React
+2. Javascript
+3. ESLint
+4. Yes
+
+
+-------------- Recitation
+pam...
+cereza..
+
+
+-------------- Git
+> Pull
+git fetch
+git pull
+
+
+> Check/ Switch branch
+git remote -v 		Check if you are in the correct repository
+git branch	Check if you are in the correct branch (session_8)
+git switch session_8	
+
+
+
+-------------- Exam Scope (No Internet Exam)
+1. Set up: React + Tailwind
+2. Terminologies i.e.:
+	- Shortcut Operators:
+		- Ternary
+		- Logical AND
+	- Render
+	- Conditional Rendering
+	- Hooks:
+		- Definition
+		- Syntax and Usage
+	- React File Structure
+	- Scenario Base Identification
+3. React CRUD
+
+
+
