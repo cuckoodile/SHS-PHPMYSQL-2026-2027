@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+input {
+  background-color: white;
+  border: solid 3px;
+}
+
+select,
+option {
+  background-color: white;
+  border: solid 2px;
+}
+
+option,
+select, input {
+  color: black;
+}
