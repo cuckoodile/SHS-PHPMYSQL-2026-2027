@@ -15,3 +15,10 @@ option,
 select, input {
   color: black;
 }
+
+button {
+    border: solid 3px;
+    padding: .4rem .6rem;
+    border-radius: 7px;
+    cursor: pointer;
+}

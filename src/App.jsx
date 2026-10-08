@@ -16,7 +16,7 @@ export default function App() {
   ]);
 
   return (
-    <main className="bg-slate-950 text-white text-6xl min-h-screen">
+    <main className="bg-slate-950 text-white text-6xl min-h-screen flex flex-col items-center gap-8 p-4">
       <h1>Users Gallery</h1>
 
       {/* Form Section */}
