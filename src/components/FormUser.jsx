@@ -1,15 +1,48 @@
 import React, { useState } from "react";
 
-export default function FormUser() {
+export default function FormUser({ setUsers, users, idCounter, setIdCounter }) {
   const [formData, setFormData] = useState({
+    id: idCounter,
     first_name: "",
     last_name: "",
     age: 0,
-    gender: "",
+    gender: "m",
   });
 
-  function handleSubmit() {
-    alert("Hello world!");
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    // Validators
+    if (formData.age < 18) {
+      alert("Invalid Age!");
+      return;
+    }
+
+    if (formData.first_name.trim() == "") {
+      alert("First Name cannot be empty!");
+      return;
+    }
+
+    if (formData.last_name.trim() == "") {
+      alert("Last Name cannot be empty!");
+      return;
+    }
+
+    if (formData.gender.trim() == "") {
+      alert("Gender cannot be empty!");
+      return;
+    }
+
+    // State Updates
+    setUsers([formData, ...users]);
+
+    setFormData({
+      id: idCounter,
+      first_name: "",
+      last_name: "",
+      age: 0,
+      gender: "m",
+    });
   }
 
   //   DRY Principle
@@ -18,12 +51,6 @@ export default function FormUser() {
   function handleInputChange(e) {
     // Destructuring..
     const { name, value } = e.target;
-
-    /*
-        e.target = {
-            name: 
-        }
-    */
 
     setFormData({ ...formData, [name]: value });
 
@@ -51,25 +78,46 @@ export default function FormUser() {
       {/* First Name Field */}
       <div>
         <label htmlFor="first_name">First Name</label>
-        <input type="text" name="first_name" value={formData.first_name} onChange={handleInputChange} />
+        <input
+          type="text"
+          name="first_name"
+          value={formData.first_name}
+          onChange={handleInputChange}
+        />
       </div>
 
       {/* Last Name Field */}
       <div>
         <label htmlFor="last_name">Last Name</label>
-        <input type="text" name="last_name" value={formData.last_name} onChange={handleInputChange} />
+        <input
+          type="text"
+          name="last_name"
+          value={formData.last_name}
+          onChange={handleInputChange}
+        />
       </div>
 
       {/* Age Field */}
       <div>
         <label htmlFor="age">Age</label>
-        <input type="number" name="age" value={formData.age} onChange={handleInputChange} />
+        <input
+          type="number"
+          name="age"
+          value={formData.age}
+          onChange={handleInputChange}
+          min={18}
+        />
       </div>
 
       {/* Gender Field */}
       <div>
         <label htmlFor="gender">Gender</label>
-        <select name="gender" id="gender" value={formData.gender} onChange={handleInputChange}>
+        <select
+          name="gender"
+          id="gender"
+          value={formData.gender}
+          onChange={handleInputChange}
+        >
           <option value="m">Male</option>
           <option value="f">Female</option>
         </select>
