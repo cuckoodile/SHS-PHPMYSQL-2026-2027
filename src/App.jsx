@@ -5,7 +5,7 @@ import ContainerUsers from "./components/ContainerUsers";
 
 export default function App() {
   // Getter: users | Setter: setUsers | Default value: [{...}]
-  const [user, setUsers] = useState([
+  const [users, setUsers] = useState([
     {
       id: 1,
       first_name: "Frieren",
@@ -23,7 +23,7 @@ export default function App() {
       <FormUser />
 
       {/* User Gallery Section */}
-      <ContainerUsers />
+      <ContainerUsers users={users} />
     </main>
   );
 }

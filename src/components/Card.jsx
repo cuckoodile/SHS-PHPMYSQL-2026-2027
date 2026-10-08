@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function Card() {
+export default function Card({user}) {
   return (
-    <div>Card</div>
+    <div>
+        {/* Null check... */}
+        <p>{user?.first_name || "First Name"}</p>
+    </div>
   )
 }
