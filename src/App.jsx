@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
-import Dashboard from "./pages/Dashboard";
+import { Outlet } from "react-router";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function App() {
-  const nav = useNavigate()
-
   return (
-    <div className="bg-slate-950 text-white text-6xl min-h-screen">
-      <header>
-        <h1>App</h1>
+    <div className="bg-slate-950 text-white text-6xl min-h-screen flex flex-col">
+      <Header />
 
-        <nav>
-          <button onClick={() => nav('/')}>Dashboard</button>
-          <button onClick={() => nav('/profile')}>Profile</button>
-        </nav>
-      </header>
-
-      <main className="bg-slate-900">
+      <main className="bg-slate-900 p-3 flex-1 pt-18">
         {/* <Dashboard /> */}
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }
