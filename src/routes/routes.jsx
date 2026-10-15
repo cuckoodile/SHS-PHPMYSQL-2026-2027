@@ -3,6 +3,7 @@ import App from "../App";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
 import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
 
 const routes = createBrowserRouter([
     // Current URL: ""
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
     path: "login",
     element: <Login />,
   },
+  {
+    path: "*",
+    element: <NotFound />
+  }
 ]);
 
 export default routes;
