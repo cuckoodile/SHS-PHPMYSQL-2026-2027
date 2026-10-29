@@ -4,10 +4,11 @@ import { useState } from "react";
 
 export default function Gallery({ pokemons }) {
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("Ascending");
 
   const filteredPokemons = pokemons.filter((p) =>
     p.name.toLowerCase().includes(search.toLocaleLowerCase().trim()),
-  );
+  ).sort((a, b) => sort == "Ascending" ? a.id - b.id : b.id - a.id);
 
   return (
     <div>
@@ -18,6 +19,13 @@ export default function Gallery({ pokemons }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <button
+          onClick={() =>
+            setSort(sort == "Ascending" ? "Descending" : "Ascending")
+          }
+        >
+          ID: {sort}
+        </button>
       </section>
 
       <section className="flex flex-wrap gap-4">
