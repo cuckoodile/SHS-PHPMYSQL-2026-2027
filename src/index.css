@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* input[type="text"],
+input[type="number"],
+select {
+  border: solid;
+} */
+
+input:not([type="file"]), select {
+  border: solid;
+}
