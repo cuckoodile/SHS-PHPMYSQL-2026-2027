@@ -1,0 +1,24 @@
+Create ANY system that you want using React.
+
+Requirements:
+1. Registration and Login
+2. At least 4 pages
+3. Must implement a CRUD
+4. Must have a profile page with dynamic routing
+5. Must have at least 3 table like data
+6. Data are stored in local storage
+
+Libraries:
+1. Tailwindcss
+2. React Router
+
+
+====================
++3 exam
+regis.
+dabocol.
+pam.
+
+recitation
+pam.....
+villadares..
